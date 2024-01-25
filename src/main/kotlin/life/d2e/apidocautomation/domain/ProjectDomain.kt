@@ -1,8 +1,6 @@
 package life.d2e.apidocautomation.domain
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Table
+import jakarta.persistence.*
 
 
 @Entity
@@ -13,6 +11,10 @@ class ProjectDomain(
 
     @Column(nullable = false)
     var projectName: String = projectName
-    protected set
+        protected set
+
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    protected val mutableHosts: MutableList<HostDomain> = mutableListOf()
+    val hosts: List<HostDomain> get() = mutableHosts.toList()
 
 }
