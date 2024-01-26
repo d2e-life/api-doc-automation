@@ -1,6 +1,6 @@
 package life.d2e.apidocautomation.controller
 
-import life.d2e.apidocautomation.domain.ProjectDomain
+import life.d2e.apidocautomation.entity.ProjectEntity
 import life.d2e.apidocautomation.service.ProjectService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 class ProjectRestController(val projectService: ProjectService) {
 
     @GetMapping("/v1/projects")
-    fun getProjects(): List<ProjectDomain> {
+    fun getProjects(): List<ProjectEntity> {
         return projectService.getProjects()
     }
 }

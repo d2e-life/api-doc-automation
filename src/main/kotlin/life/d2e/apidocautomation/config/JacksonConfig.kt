@@ -64,7 +64,6 @@ class JacksonConfig {
         javaTimeModule.addSerializer(LocalDateTime::class, CustomLocalDateTimeSerializer())
         javaTimeModule.addDeserializer(LocalDateTime::class, CustomLocalDateTimeDeSerializer())
 
-
         objectMapper.registerModule(javaTimeModule)
         //objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 

@@ -1,8 +1,8 @@
 package life.d2e.apidocautomation
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import life.d2e.apidocautomation.domain.HostDomain
-import life.d2e.apidocautomation.domain.ProjectDomain
+import life.d2e.apidocautomation.entity.HostEntity
+import life.d2e.apidocautomation.entity.ProjectEntity
 import life.d2e.apidocautomation.repository.HostRepository
 import life.d2e.apidocautomation.repository.ProjectRepository
 import life.d2e.apidocautomation.service.ProjectService
@@ -21,7 +21,7 @@ class ProjectTest @Autowired constructor(
     @Test
     fun insertProjectTest() {
         for (i: Int in 1..100) {
-            val project = ProjectDomain("hello$i")
+            val project = ProjectEntity("hello$i")
             projectRepository.save(project)
         }
     }
@@ -35,22 +35,22 @@ class ProjectTest @Autowired constructor(
 
     @Test
     fun insertProjectWithHost() {
-        val project = ProjectDomain("test-project")
+        val project = ProjectEntity("test-project")
         projectRepository.save(project)
 
         hostRepository.saveAll(
             mutableListOf(
-                HostDomain("local", "http://localhost:8080", project),
-                HostDomain("dev", "https://dev-api.d2e.life", project),
-                HostDomain("qa", "https://qa-api.d2e.life", project),
-                HostDomain("live", "https://api.d2e.life", project),
+                HostEntity("local", "http://localhost:8080", project),
+                HostEntity("dev", "https://dev-api.d2e.life", project),
+                HostEntity("qa", "https://qa-api.d2e.life", project),
+                HostEntity("live", "https://api.d2e.life", project),
             )
         )
     }
 
     @Test
     fun getProjectWithHost() {
-        val projects: List<ProjectDomain> = projectRepository.findAll()
+        val projects: List<ProjectEntity> = projectRepository.findAll()
         println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(projects))
     }
 
