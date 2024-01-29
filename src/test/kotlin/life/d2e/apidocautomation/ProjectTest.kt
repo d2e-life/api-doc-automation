@@ -1,57 +1,63 @@
 package life.d2e.apidocautomation
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import life.d2e.apidocautomation.entity.HostEntity
-import life.d2e.apidocautomation.entity.ProjectEntity
-import life.d2e.apidocautomation.repository.HostRepository
-import life.d2e.apidocautomation.repository.ProjectRepository
-import life.d2e.apidocautomation.service.ProjectService
+import life.d2e.apidocautomation.project.dto.ProjectDto
+import life.d2e.apidocautomation.project.dto.ProjectEnvDto
+import life.d2e.apidocautomation.project.service.ProjectService
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import java.util.*
 
 @SpringBootTest
 class ProjectTest @Autowired constructor(
-    val projectRepository: ProjectRepository,
-    val hostRepository: HostRepository,
-    val objectMapper: ObjectMapper,
     val projectService: ProjectService
 ) {
 
     @Test
-    fun insertProjectTest() {
-        for (i: Int in 1..100) {
-            val project = ProjectEntity("hello$i")
-            projectRepository.save(project)
-        }
-    }
-
-    @Test
     fun getProjectTest() {
-        for (project in projectService.getProjects()) {
-            println("${project.id} ${project.projectName}")
-        }
+        val project: ProjectDto? = projectService.getProject(UUID.fromString("018d5642-cc1b-f38b-a4ea-bfb39cfbb7d8"))
+        println(project)
     }
 
     @Test
-    fun insertProjectWithHost() {
-        val project = ProjectEntity("test-project")
-        projectRepository.save(project)
+    fun getProjectWithHostTest() {
+        val project: ProjectDto? =
+            projectService.getProjectWithHost(UUID.fromString("018d5642-cc1b-f38b-a4ea-bfb39cfbb7d8"))
+        println(project)
+    }
 
-        hostRepository.saveAll(
-            mutableListOf(
-                HostEntity("local", "http://localhost:8080", project),
-                HostEntity("dev", "https://dev-api.d2e.life", project),
-                HostEntity("qa", "https://qa-api.d2e.life", project),
-                HostEntity("live", "https://api.d2e.life", project),
-            )
+    @Test
+    fun getProjectsTest() {
+        val projects = projectService.getProjects()
+        println(projects)
+    }
+
+    @Test
+    fun insertProjectTest() {
+        val projectDto = ProjectDto(
+            "from dto",
+            listOf(
+                ProjectEnvDto("dev", "dev.d2e.life"),
+                ProjectEnvDto("qa", "qa.d2e.life"),
+                ProjectEnvDto("live", "d2e.life")
+            ),
         )
+        val result = projectService.insertProject(projectDto)
+        println(result)
     }
 
     @Test
-    fun getProjectWithHost() {
-        val projects: List<ProjectEntity> = projectRepository.findAll()
-        println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(projects))
+    fun updateProjectTest() {
+        val projectDto = ProjectDto(
+            "from dto changed!",
+            listOf(
+                ProjectEnvDto("dev", "dev.d2e.life"),
+                ProjectEnvDto("qa", "qa.d2e.life"),
+                ProjectEnvDto("live", "d2e.life")
+            ),
+        )
+        val result = projectService.updateProject(UUID.fromString("018d5642-cc1b-f38b-a4ea-bfb39cfbb7d8"), projectDto)
+        println(result)
     }
 
 }

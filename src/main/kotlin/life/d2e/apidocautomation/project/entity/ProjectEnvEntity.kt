@@ -1,10 +1,11 @@
-package life.d2e.apidocautomation.entity
+package life.d2e.apidocautomation.project.entity
 
 import jakarta.persistence.*
+import life.d2e.apidocautomation.common.PrimaryKeyEntity
 
 @Entity
-@Table(name = "pt_host")
-class HostEntity(
+@Table(name = "pt_project_env")
+class ProjectEnvEntity(
     hostEnv: String,
     host: String,
     project: ProjectEntity
@@ -22,4 +23,5 @@ class HostEntity(
     @JoinColumn(nullable = false, foreignKey = ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
     var project: ProjectEntity = project
         protected set
+
 }

@@ -1,4 +1,4 @@
-package life.d2e.apidocautomation.entity
+package life.d2e.apidocautomation.common
 
 import com.github.f4b6a3.ulid.UlidCreator
 import jakarta.persistence.*
