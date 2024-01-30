@@ -56,7 +56,7 @@ class ProjectTest @Autowired constructor(
                 ProjectEnvDto("live", "d2e.life")
             ),
         )
-        val result = projectService.updateProject(UUID.fromString("018d5642-cc1b-f38b-a4ea-bfb39cfbb7d8"), projectDto)
+        val result = projectService.updateProject(UUID.fromString("018d58cc-b491-eace-a801-1d43b0af1547"), projectDto)
         println(result)
     }
 

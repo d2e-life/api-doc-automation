@@ -16,7 +16,7 @@ class ProjectEntity(
     var projectName: String = projectName
         protected set
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", cascade = [CascadeType.ALL])
     var envs: MutableList<ProjectEnvEntity> = mutableListOf()
         protected set
 

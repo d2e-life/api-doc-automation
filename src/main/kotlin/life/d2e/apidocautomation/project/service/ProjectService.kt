@@ -32,7 +32,7 @@ class ProjectService(
         if (StringUtils.isBlank(projectDto.projectName)) {
             InsertProjectResult.ERROR
         }
-        projectRepository.save(ProjectEntity.from(projectDto)).toDto()
+        projectRepository.save(ProjectEntity.from(projectDto))
         return InsertProjectResult.SUCCESS
     }
 
