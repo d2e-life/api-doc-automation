@@ -17,10 +17,6 @@ class ProjectQueryService(
         return project?.toDto()
     }
 
-    fun getProjectWithHost(id: UUID): ProjectDto? {
-        return projectRepository.findByIdWithHosts(id)?.toDto()
-    }
-
     fun getProjects(): List<ProjectDto> {
         return projectRepository.findAll().map { it.toDto() }.toList()
     }
