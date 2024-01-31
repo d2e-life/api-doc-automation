@@ -1,4 +1,4 @@
-package life.d2e.apidocautomation.project.dto
+package life.d2e.apidocautomation.project.query.dto
 
 import java.util.*
 
