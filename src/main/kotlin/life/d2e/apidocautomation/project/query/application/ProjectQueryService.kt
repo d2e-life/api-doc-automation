@@ -2,7 +2,7 @@ package life.d2e.apidocautomation.project.query.application
 
 import life.d2e.apidocautomation.project.command.domain.Project
 import life.d2e.apidocautomation.project.query.dto.ProjectDto
-import life.d2e.apidocautomation.project.repository.ProjectRepository
+import life.d2e.apidocautomation.project.infra.ProjectRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import java.util.*

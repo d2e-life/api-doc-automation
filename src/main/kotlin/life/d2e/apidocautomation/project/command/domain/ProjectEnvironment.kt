@@ -1,20 +1,16 @@
 package life.d2e.apidocautomation.project.command.domain
 
 import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Table
-import life.d2e.apidocautomation.common.PrimaryKeyEntity
+import jakarta.persistence.Embeddable
 
-@Entity
-@Table(name = "pt_project_env")
+@Embeddable
 class ProjectEnvironment(
-    hostEnv: String,
+    environmentName: String,
     host: String,
-    project: Project
-) : PrimaryKeyEntity() {
+) {
 
     @Column(nullable = false)
-    var environmentName: String = hostEnv
+    var environmentName: String = environmentName
         protected set
 
     @Column(nullable = false)

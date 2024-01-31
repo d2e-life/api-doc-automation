@@ -1,6 +1,8 @@
 package life.d2e.apidocautomation.project.command.domain
 
+import io.micrometer.common.util.StringUtils
 import jakarta.persistence.*
+import life.d2e.apidocautomation.common.DomainHandleException
 import life.d2e.apidocautomation.common.PrimaryKeyEntity
 import life.d2e.apidocautomation.project.query.dto.ProjectDto
 import life.d2e.apidocautomation.project.query.dto.ProjectEnvDto
@@ -9,42 +11,43 @@ import life.d2e.apidocautomation.project.query.dto.ProjectEnvDto
 @Entity
 @Table(name = "pt_project")
 class Project(
-    projectName: String
+    projectName: String,
+    environments: MutableList<ProjectEnvironment>
 ) : PrimaryKeyEntity() {
 
     @Column(nullable = false)
     var projectName: String = projectName
         protected set
 
-    @OneToMany(mappedBy = "project", cascade = [CascadeType.ALL])
-    var envs: MutableList<ProjectEnvironment> = mutableListOf()
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "pt_project_env", joinColumns = [JoinColumn(name = "project_id")])
+    var environments: MutableList<ProjectEnvironment> = environments
         protected set
 
+    init {
+        validateProjectName(projectName)
+        validateProjectEnvironments(environments)
+    }
+
     fun changeProjectName(projectName: String) {
+        validateProjectName(projectName)
         this.projectName = projectName
     }
 
-    fun addEnvs(envs: List<ProjectEnvironment>) {
-        this.envs.addAll(envs)
+    fun changeEnvironments(environments: MutableList<ProjectEnvironment>) {
+        validateProjectEnvironments(environments)
+        this.environments = environments
     }
 
     fun toDto(): ProjectDto {
-        // todo: proxy 객체라면 envs 객체 dto 로 만들지 말아야 함
-        return ProjectDto(id, projectName, this.envs.map { ProjectEnvDto(it.id, it.environmentName, it.host) })
+        return ProjectDto(id, projectName, this.environments.map { ProjectEnvDto(it.environmentName, it.host) })
     }
 
-    companion object {
-        fun from(projectDto: ProjectDto): Project {
-            val project = Project(projectDto.projectName!!)
-            project.addEnvs(
-                projectDto.envs
-                    .map { ProjectEnvironment(it.host!!, it.hostEnv!!, project) }
-                    .toList()
-            )
-
-            return project
-        }
+    private fun validateProjectName(projectName: String) {
+        if (StringUtils.isBlank(projectName)) throw DomainHandleException(ProjectError.PROJECT_NAME_INVALID)
     }
-
+    private fun validateProjectEnvironments(environments: MutableList<ProjectEnvironment>) {
+        if (environments.isEmpty()) throw DomainHandleException(ProjectError.PROJECT_ENVIRONMENT_EMPTY)
+    }
 
 }
