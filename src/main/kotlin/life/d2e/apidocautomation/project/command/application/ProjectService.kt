@@ -29,16 +29,16 @@ class ProjectService(
     @Transactional
     fun changeProjectName(id: UUID, projectRequest: ProjectRequest) {
         val project = projectRepository.findByIdOrNull(id) ?: throw DomainHandleException(ProjectError.PROJECT_NOT_FOUND)
-        project.changeProjectName(projectRequest.projectName!!)
+        project.changeProjectName(projectRequest.projectName ?: throw DomainHandleException(ProjectError.PROJECT_NAME_INVALID))
     }
 
     @Transactional
     fun changeProjectEnvironment(id: UUID, projectRequest: ProjectRequest) {
         val projectEntity = projectRepository.findByIdOrNull(id) ?: throw DomainHandleException(ProjectError.PROJECT_NOT_FOUND)
         projectEntity.changeEnvironments(
-            projectRequest.projectEnvironments!!.map {
+            projectRequest.projectEnvironments?.map {
                 ProjectEnvironment(it.environmentName, it.host)
-            }.toMutableList()
+            }?.toMutableList() ?: throw DomainHandleException(ProjectError.PROJECT_ENVIRONMENT_EMPTY)
         )
     }
 
