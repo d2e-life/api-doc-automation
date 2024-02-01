@@ -2,6 +2,7 @@ package life.d2e.apidocautomation.project.command.domain
 
 import io.micrometer.common.util.StringUtils
 import jakarta.persistence.*
+import life.d2e.apidocautomation.api.command.domain.Api
 import life.d2e.apidocautomation.common.DomainHandleException
 import life.d2e.apidocautomation.common.PrimaryKeyEntity
 import life.d2e.apidocautomation.project.query.dto.ProjectDto
@@ -22,6 +23,10 @@ class Project(
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "pt_project_env", joinColumns = [JoinColumn(name = "project_id")], foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
     var environments: MutableList<ProjectEnvironment> = environments
+        protected set
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
+    var apis: MutableList<Api> = mutableListOf()
         protected set
 
     init {
@@ -46,6 +51,7 @@ class Project(
     private fun validateProjectName(projectName: String) {
         if (StringUtils.isBlank(projectName)) throw DomainHandleException(ProjectError.PROJECT_NAME_INVALID)
     }
+
     private fun validateProjectEnvironments(environments: MutableList<ProjectEnvironment>) {
         if (environments.isEmpty()) throw DomainHandleException(ProjectError.PROJECT_ENVIRONMENT_EMPTY)
     }
