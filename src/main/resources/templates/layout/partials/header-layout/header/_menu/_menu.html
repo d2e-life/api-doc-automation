@@ -19,7 +19,7 @@
 			<!--end:Menu link-->
 			<!--begin:Menu sub-->
 			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown p-0 w-100 w-lg-850px">
-				<div th:replace="${@theme.getView('partials/header-layout/header/_menu/__dashboards.html')}"></div>
+				<div th:replace="~{${@theme.getView('partials/header-layout/header/_menu/__dashboards.html')}}"></div>
 			</div>
 			<!--end:Menu sub-->
 		</div>
@@ -35,7 +35,7 @@
 			<!--end:Menu link-->
 			<!--begin:Menu sub-->
 			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown p-0">
-				<div th:replace="${@theme.getView('partials/header-layout/header/_menu/__pages.html')}"></div>
+				<div th:replace="~{${@theme.getView('partials/header-layout/header/_menu/__pages.html')}}"></div>
 			</div>
 			<!--end:Menu sub-->
 		</div>
@@ -1199,7 +1199,7 @@
 			<!--end:Menu link-->
 			<!--begin:Menu sub-->
 			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown p-0 w-100 w-lg-850px">
-				<div th:replace="${@theme.getView('partials/header-layout/header/_menu/__layouts.html')}"></div>
+				<div th:replace="~{${@theme.getView('partials/header-layout/header/_menu/__layouts.html')}}"></div>
 			</div>
 			<!--end:Menu sub-->
 		</div>

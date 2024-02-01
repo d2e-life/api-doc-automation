@@ -9,14 +9,14 @@
 	<div data-kt-search-element="content" class="menu menu-sub menu-sub-dropdown p-7 w-325px w-md-375px">
 		<!--begin::Wrapper-->
 		<div data-kt-search-element="wrapper">
-			<div th:replace="${@theme.getView('partials/sidebar-layout/search/partials/_form-dropdown.html')}"></div>
-			<div th:replace="${@theme.getView('partials/sidebar-layout/search/partials/_results.html')}"></div>
-			<div th:replace="${@theme.getView('partials/sidebar-layout/search/partials/_main.html')}"></div>
-			<div th:replace="${@theme.getView('partials/sidebar-layout/search/partials/_empty.html')}"></div>
+			<div th:replace="~{${@theme.getView('partials/sidebar-layout/search/partials/_form-dropdown.html')}}"></div>
+			<div th:replace="~{${@theme.getView('partials/sidebar-layout/search/partials/_results.html')}}"></div>
+			<div th:replace="~{${@theme.getView('partials/sidebar-layout/search/partials/_main.html')}}"></div>
+			<div th:replace="~{${@theme.getView('partials/sidebar-layout/search/partials/_empty.html')}}"></div>
 		</div>
 		<!--end::Wrapper-->
-		<div th:replace="${@theme.getView('partials/sidebar-layout/search/partials/_advanced-options.html')}"></div>
-		<div th:replace="${@theme.getView('partials/sidebar-layout/search/partials/_preferences.html')}"></div>
+		<div th:replace="~{${@theme.getView('partials/sidebar-layout/search/partials/_advanced-options.html')}}"></div>
+		<div th:replace="~{${@theme.getView('partials/sidebar-layout/search/partials/_preferences.html')}}"></div>
 	</div>
 	<!--end::Menu-->
 </div>
