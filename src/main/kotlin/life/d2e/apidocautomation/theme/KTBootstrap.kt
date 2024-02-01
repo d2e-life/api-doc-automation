@@ -1,138 +1,126 @@
-package life.d2e.apidocautomation.theme;
+package life.d2e.apidocautomation.theme
+
+import life.d2e.apidocautomation.config.properties.KTThemeBaseConfig
 
 
-import life.d2e.apidocautomation.config.properties.KTThemeBaseConfig;
-
-public class KTBootstrap {
-
-    private final KTTheme theme;
-    private final KTThemeBaseConfig settings;
-
-    public KTBootstrap(KTTheme theme, KTThemeBaseConfig settings){
-        this.theme = theme;
-        this.settings = settings;
-    }
-
+class KTBootstrap(private val theme: KTTheme, private val settings: KTThemeBaseConfig) {
     // Global theme initializer
-    public void init() {
-        initThemeMode();
-        initThemeDirection();
-        initLayout();
+    fun init() {
+        initThemeMode()
+        initThemeDirection()
+        initLayout()
     }
 
     // Init theme mode option from settings
-    public void initThemeMode()
-    {
-        theme.setModeSwitch(settings.getModeSwitchEnabled());
-        theme.setModeDefault(settings.getModeDefault());
+    fun initThemeMode() {
+        theme.setModeSwitch(settings.modeSwitchEnabled)
+        theme.modeDefault = settings.modeDefault
     }
 
     // Init theme direction option (RTL or LTR) from settings
     // Init RTL html attributes by checking if RTL is enabled.
     // This function is being called for the html tag
-    public void initThemeDirection()
-    {
-        theme.setDirection(settings.getDirection());
+    fun initThemeDirection() {
+        theme.direction = settings.direction
 
-        if (theme.isRtlDirection())
-        {
-            theme.addHtmlAttribute("html", "direction", "rtl");
-            theme.addHtmlAttribute("html", "dir", "rtl");
-            theme.addHtmlAttribute("html", "style", "'direction: rtl'");
+        if (theme.isRtlDirection) {
+            theme.addHtmlAttribute("html", "direction", "rtl")
+            theme.addHtmlAttribute("html", "dir", "rtl")
+            theme.addHtmlAttribute("html", "style", "'direction: rtl'")
         }
     }
 
-    public void initLayout(){
-        theme.addHtmlAttribute("body", "id", "kt_app_body");
+    fun initLayout() {
+        theme.addHtmlAttribute("body", "id", "kt_app_body")
 
-        theme.setLayout(settings.getDefaultLayout());
+        theme.layout = settings.defaultLayout
     }
 
-    public void initDarkSidebarLayout(){
+    fun initDarkSidebarLayout() {
         // Layout options
-        theme.addHtmlAttribute("body", "data-kt-app-layout", "dark-sidebar");
-        theme.addHtmlAttribute("body", "data-kt-app-header-fixed", "true");
-        theme.addHtmlAttribute("body", "data-kt-app-sidebar-fixed", "true");
-        theme.addHtmlAttribute("body", "data-kt-app-sidebar-hoverable", "true");
-        theme.addHtmlAttribute("body", "data-kt-app-sidebar-push-header", "true");
-        theme.addHtmlAttribute("body", "data-kt-app-sidebar-push-toolbar", "true");
-        theme.addHtmlAttribute("body", "data-kt-app-sidebar-push-footer", "true");
-        theme.addHtmlAttribute("body", "data-kt-app-toolbar-enabled", "true");
-        theme.addHtmlClass("body", "app-default");
+        theme.addHtmlAttribute("body", "data-kt-app-layout", "dark-sidebar")
+        theme.addHtmlAttribute("body", "data-kt-app-header-fixed", "true")
+        theme.addHtmlAttribute("body", "data-kt-app-sidebar-fixed", "true")
+        theme.addHtmlAttribute("body", "data-kt-app-sidebar-hoverable", "true")
+        theme.addHtmlAttribute("body", "data-kt-app-sidebar-push-header", "true")
+        theme.addHtmlAttribute("body", "data-kt-app-sidebar-push-toolbar", "true")
+        theme.addHtmlAttribute("body", "data-kt-app-sidebar-push-footer", "true")
+        theme.addHtmlAttribute("body", "data-kt-app-toolbar-enabled", "true")
+        theme.addHtmlClass("body", "app-default")
 
         // Global vendors and javascript files
-        theme.addVendor("datatables");
-        theme.addJavascriptFile("js/widgets.bundle.js");
-        theme.addJavascriptFile("js/custom/apps/chat/chat.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/upgrade-plan.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/create-app.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/users-search.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/new-target.js");
+        theme.addVendor("datatables")
+        theme.addJavascriptFile("js/widgets.bundle.js")
+        theme.addJavascriptFile("js/custom/apps/chat/chat.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/upgrade-plan.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/create-app.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/users-search.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/new-target.js")
     }
 
-    public void initLightSidebarLayout(){
+    fun initLightSidebarLayout() {
         // Layout options
-        theme.addHtmlAttribute("body", "data-kt-app-layout", "light-sidebar");
-        theme.addHtmlAttribute("body", "data-kt-app-header-fixed", "false");
-        theme.addHtmlAttribute("body", "data-kt-app-sidebar-fixed", "true");
-        theme.addHtmlAttribute("body", "data-kt-app-sidebar-hoverable", "true");
-        theme.addHtmlAttribute("body", "data-kt-app-sidebar-push-header", "true");
-        theme.addHtmlAttribute("body", "data-kt-app-sidebar-push-toolbar", "true");
-        theme.addHtmlAttribute("body", "data-kt-app-sidebar-push-footer", "true");
-        theme.addHtmlAttribute("body", "data-kt-app-toolbar-enabled", "true");
-        theme.addHtmlClass("body", "app-default");
+        theme.addHtmlAttribute("body", "data-kt-app-layout", "light-sidebar")
+        theme.addHtmlAttribute("body", "data-kt-app-header-fixed", "false")
+        theme.addHtmlAttribute("body", "data-kt-app-sidebar-fixed", "true")
+        theme.addHtmlAttribute("body", "data-kt-app-sidebar-hoverable", "true")
+        theme.addHtmlAttribute("body", "data-kt-app-sidebar-push-header", "true")
+        theme.addHtmlAttribute("body", "data-kt-app-sidebar-push-toolbar", "true")
+        theme.addHtmlAttribute("body", "data-kt-app-sidebar-push-footer", "true")
+        theme.addHtmlAttribute("body", "data-kt-app-toolbar-enabled", "true")
+        theme.addHtmlClass("body", "app-default")
 
         // Global vendors and javascript files
-        theme.addVendor("datatables");
-        theme.addJavascriptFile("js/widgets.bundle.js");
-        theme.addJavascriptFile("js/custom/apps/chat/chat.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/upgrade-plan.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/create-app.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/users-search.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/new-target.js");
+        theme.addVendor("datatables")
+        theme.addJavascriptFile("js/widgets.bundle.js")
+        theme.addJavascriptFile("js/custom/apps/chat/chat.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/upgrade-plan.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/create-app.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/users-search.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/new-target.js")
     }
 
-    public void initDarkHeaderLayout(){
+    fun initDarkHeaderLayout() {
         // Layout options
-        theme.addHtmlAttribute("body", "data-kt-app-layout", "dark-header");
-        theme.addHtmlAttribute("body", "data-kt-app-header-fixed", "true");
-        theme.addHtmlAttribute("body", "data-kt-app-toolbar-enabled", "true");
-        theme.addHtmlClass("body", "app-default");
+        theme.addHtmlAttribute("body", "data-kt-app-layout", "dark-header")
+        theme.addHtmlAttribute("body", "data-kt-app-header-fixed", "true")
+        theme.addHtmlAttribute("body", "data-kt-app-toolbar-enabled", "true")
+        theme.addHtmlClass("body", "app-default")
 
         // Global vendors and javascript files
-        theme.addVendor("datatables");
-        theme.addJavascriptFile("js/widgets.bundle.js");
-        theme.addJavascriptFile("js/custom/apps/chat/chat.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/upgrade-plan.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/create-app.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/users-search.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/new-target.js");
+        theme.addVendor("datatables")
+        theme.addJavascriptFile("js/widgets.bundle.js")
+        theme.addJavascriptFile("js/custom/apps/chat/chat.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/upgrade-plan.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/create-app.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/users-search.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/new-target.js")
     }
 
-    public void initLightHeaderLayout(){
+    fun initLightHeaderLayout() {
         // Layout options
-        theme.addHtmlAttribute("body", "data-kt-app-layout", "light-header");
-        theme.addHtmlAttribute("body", "data-kt-app-header-fixed", "true");
-        theme.addHtmlAttribute("body", "data-kt-app-toolbar-enabled", "true");
-        theme.addHtmlClass("body", "app-default");
+        theme.addHtmlAttribute("body", "data-kt-app-layout", "light-header")
+        theme.addHtmlAttribute("body", "data-kt-app-header-fixed", "true")
+        theme.addHtmlAttribute("body", "data-kt-app-toolbar-enabled", "true")
+        theme.addHtmlClass("body", "app-default")
 
         // Global vendors and javascript files
-        theme.addVendor("datatables");
-        theme.addJavascriptFile("js/widgets.bundle.js");
-        theme.addJavascriptFile("js/custom/apps/chat/chat.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/upgrade-plan.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/create-app.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/users-search.js");
-        theme.addJavascriptFile("js/custom/utilities/modals/new-target.js");
+        theme.addVendor("datatables")
+        theme.addJavascriptFile("js/widgets.bundle.js")
+        theme.addJavascriptFile("js/custom/apps/chat/chat.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/upgrade-plan.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/create-app.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/users-search.js")
+        theme.addJavascriptFile("js/custom/utilities/modals/new-target.js")
     }
 
-    public void initAuthLayout(){
+    fun initAuthLayout() {
         // Layout options
-        theme.addHtmlClass("body", "app-blank");
+        theme.addHtmlClass("body", "app-blank")
     }
 
-    public void initSystemLayout(){
+    fun initSystemLayout() {
         // Layout options
-        theme.addHtmlClass("body", "app-black bgi-size-cover bgi-position-center bgi-no-repeat");
+        theme.addHtmlClass("body", "app-black bgi-size-cover bgi-position-center bgi-no-repeat")
     }
 }

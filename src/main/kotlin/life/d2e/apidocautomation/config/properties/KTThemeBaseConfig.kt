@@ -22,4 +22,5 @@ data class KTThemeBaseConfig(
         val css: List<String>,
         val js: List<String>,
     )
+
 }

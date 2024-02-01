@@ -1,324 +1,269 @@
-package life.d2e.apidocautomation.theme;
+package life.d2e.apidocautomation.theme
 
-import life.d2e.apidocautomation.config.properties.KTIconsBaseConfig;
-import life.d2e.apidocautomation.config.properties.KTThemeBaseConfig;
-import org.springframework.beans.factory.annotation.Autowired;
+import life.d2e.apidocautomation.config.properties.KTIconsBaseConfig
+import life.d2e.apidocautomation.config.properties.KTThemeBaseConfig
+import org.apache.commons.lang3.StringUtils
+import java.io.File
+import java.io.FileNotFoundException
+import java.util.*
+import java.util.function.Consumer
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
-
-public class KTTheme {
-
-    @Autowired
-    private KTThemeBaseConfig settings;
-
-    @Autowired
-    private KTIconsBaseConfig iconSettings;
+class KTTheme(
+    val settings: KTThemeBaseConfig,
+    val iconSettings: KTIconsBaseConfig
+) {
 
     // Theme variables
-    private boolean modeSwitchEnabled = false;
-
-    private String modeDefault = "light";
-
-    private String direction = "ltr";
-
-    private String currentLayout = null;
-
-    private final Map<String, Map<String, String>> htmlAttributes = new HashMap<String, Map<String, String>>();
-
-    private final Map<String, String[]> htmlClasses = new HashMap<String, String[]>();
+    var isModeSwitchEnabled: Boolean = false
+        private set
+    var modeDefault: String = "light"
+    var direction: String = "ltr"
+    var layout: String? = null
+    val htmlAttributes: MutableMap<String, MutableMap<String, String>> = HashMap()
+    val htmlClasses: MutableMap<String, MutableList<String>> = HashMap()
 
     // Keep page level assets
-    private final List<String> javascriptFiles = new ArrayList<String>();
+    val javascriptFiles: MutableList<String> = ArrayList()
+    val cssFiles: MutableList<String> = ArrayList()
+    val vendorFiles: MutableList<String> = ArrayList()
 
-    private final List<String> cssFiles = new ArrayList<String>();
-
-    private final List<String> vendorFiles = new ArrayList<String>();
-
-    public void initLayout() {
-        KTBootstrap bootstrap = new KTBootstrap(this, settings);
-        bootstrap.init();
-        switch (this.getLayout()) {
-            case "auth" -> bootstrap.initAuthLayout();
-            case "default-dark-header" -> bootstrap.initDarkHeaderLayout();
-            case "default-light-header" -> bootstrap.initLightHeaderLayout();
-            case "default-dark-sidebar" -> bootstrap.initDarkSidebarLayout();
-            case "default-light-sidebar" -> bootstrap.initLightSidebarLayout();
-            case "system" -> bootstrap.initSystemLayout();
+    fun initLayout() {
+        val bootstrap = KTBootstrap(this, settings)
+        bootstrap.init()
+        when (this.layout) {
+            "auth" -> bootstrap.initAuthLayout()
+            "default-dark-header" -> bootstrap.initDarkHeaderLayout()
+            "default-light-header" -> bootstrap.initLightHeaderLayout()
+            "default-dark-sidebar" -> bootstrap.initDarkSidebarLayout()
+            "default-light-sidebar" -> bootstrap.initLightSidebarLayout()
+            "system" -> bootstrap.initSystemLayout()
         }
     }
 
     // Add HTML attributes by scope
-    public void addHtmlAttribute(String scope, String attributeName, String attributeValue) {
-        Map<String, String> attributes;
-        if (htmlAttributes.containsKey(scope)) {
-            attributes = htmlAttributes.get(scope);
+    fun addHtmlAttribute(scope: String, attributeName: String, attributeValue: String) {
+        val attributes = if (htmlAttributes.containsKey(scope)) {
+            htmlAttributes[scope]!!
         } else {
-            attributes = new HashMap<String, String>();
+            HashMap()
         }
 
-        attributes.put(attributeName, attributeValue);
-        htmlAttributes.put(scope, attributes);
+        attributes[attributeName] = attributeValue
+        htmlAttributes[scope] = attributes
     }
 
     // Add HTML class by scope
-    public void addHtmlClass(String scope, String className) {
-        List<String> list;
-        if (htmlClasses.containsKey(scope)) {
-            list = new ArrayList<String>(Arrays.asList(htmlClasses.get(scope)));
-        } else {
-            list = new ArrayList<String>();
-        }
-        list.add(className);
-        String[] array = new String[list.size()];
-        htmlClasses.put(scope, list.toArray(array));
+    fun addHtmlClass(scope: String, className: String) {
+        val list: MutableList<String> = htmlClasses[scope] ?: mutableListOf()
+        list.add(className)
+        htmlClasses[scope] = list
     }
 
     // Print HTML attributes for the HTML template
-    public String printHtmlAttributes(String scope) {
-        List<String> list = new ArrayList<String>();
+    fun printHtmlAttributes(scope: String): String {
+        val list: MutableList<String> = ArrayList()
         if (htmlAttributes.containsKey(scope)) {
-            htmlAttributes.get(scope).forEach((key, value) -> {
-                String item = key + "=" + value;
-                list.add(item);
-            });
-            return String.join(",", list);
+            htmlAttributes[scope]!!.forEach { (key: String, value: String) ->
+                val item = "$key=$value"
+                list.add(item)
+            }
+            return list.joinToString(",")
+//            return java.lang.String.join(",", list)
         }
-        return "data-kt-no-attribute='true'";
+        return "data-kt-no-attribute='true'"
     }
 
     // Print HTML classes for the HTML template
-    public String printHtmlClasses(String scope) {
+    fun printHtmlClasses(scope: String): String {
         if (htmlClasses.containsKey(scope)) {
-            return String.join(" ", htmlClasses.get(scope));
+            return htmlClasses[scope]!!.joinToString(",")
+//            return java.lang.String.join(" ", *htmlClasses[scope])
         }
-        return "";
+        return ""
     }
 
     // Get SVG icon content
-    public String getSvgIcon(String path, String classNames) {
-        List<String> svgLines = new ArrayList<String>();
+    fun getSvgIcon(path: String, classNames: String?): String {
+        val svgLines: MutableList<String> = ArrayList()
         try {
-            File myObj = new File("./src/main/resources/static/assets/media/icons/" + path);
-            Scanner myReader = new Scanner(myObj);
+            val myObj = File("./src/main/resources/static/assets/media/icons/$path")
+            val myReader = Scanner(myObj)
             while (myReader.hasNextLine()) {
-                String line = myReader.nextLine();
-                svgLines.add(line);
+                val line = myReader.nextLine()
+                svgLines.add(line)
             }
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(path + " is not found!");
-            e.printStackTrace();
+            myReader.close()
+        } catch (e: FileNotFoundException) {
+            println("$path is not found!")
+            e.printStackTrace()
         }
 
-        StringBuilder output = new StringBuilder();
+        val output = StringBuilder()
 
-        output.append("<span class=\"").append(classNames).append("\">");
-        for (String line : svgLines) {
-            output.append(line);
-        }
-        output.append("</span>");
+//        output.append("<span class=\"").append(classNames).append("\">")
+//        for (line in svgLines) {
+//            output.append(line)
+//        }
+//        output.append("</span>")
+//
+//        return output.toString()
+        return """<span class="$classNames"/></span>"""
 
-        return output.toString();
     }
 
-    public String getIcon(String iconName, String iconClass, String iconType) {
-        StringBuilder output = new StringBuilder();
+    fun getIcon(iconName: String?, iconClass: String, iconType: String): String {
 
-        String iconsFinalClass = iconClass.equals("") ? "" : " " + iconClass;
-
-        if (iconType.equals("") && !settings.getIconType().equals("")) {
-            iconType = settings.getIconType();
+        var iconsFinalClass = ""
+        if (StringUtils.isBlank(iconClass)) {
+            iconsFinalClass = iconClass
         }
 
-        if (iconType.equals("")) {
-            iconType = "outline";
-        }
-
-        if (iconType.equals("duotone")) {
-            int paths = iconSettings.getIconMap().getOrDefault(iconName, 0);
-
-
-            output.append("<i class=\"ki-").append(iconType).append(" ki-").append(iconName).append(" ").append(iconsFinalClass).append("\">");
-            for (int i = 1; i <= paths; i++) {
-                output.append("<span class=\"").append("path").append(i).append("\"></span>");
+        var _iconType = iconType
+        if (StringUtils.isBlank(iconType)) {
+            if (settings.iconType.isNotBlank()) {
+                _iconType = settings.iconType
+            } else {
+                _iconType = "outline"
             }
-            output.append("</i>");
+        }
+
+        val output = StringBuilder()
+        if (_iconType == "duotone") {
+            val paths = iconSettings.iconMap.getOrDefault(iconName, 0)
+
+            output.append("""<i class="ki-$_iconType ki-$iconName $iconsFinalClass">""")
+//            output.append("<i class=\"ki-").append(iconType).append(" ki-").append(iconName).append(" ").append(iconsFinalClass).append("\">")
+            for (i in 1..paths) {
+                output.append("""<span class="path$i"></span>""")
+//                output.append("<span class=\"").append("path").append(i).append("\"></span>")
+            }
+            output.append("</i>")
         } else {
-            output.append("<i class=\"ki-").append(iconType).append(" ki-").append(iconName).append(" ").append(iconsFinalClass).append("\"></i>");
+            output.append("<i class=\"ki-").append(_iconType).append(" ki-").append(iconName).append(" ").append(iconsFinalClass).append("\"></i>")
         }
 
-
-        return output.toString();
+        return output.toString()
     }
 
-    public String getIcon(String iconName, String iconClass) {
-        return getIcon(iconName, iconClass, "");
+    fun getIcon(iconName: String?, iconClass: String): String {
+        return getIcon(iconName, iconClass, "")
     }
 
-    public String getIcon(String iconName) {
-        return getIcon(iconName, "", "");
+    fun getIcon(iconName: String?): String {
+        return getIcon(iconName, "", "")
     }
 
     // Set dark mode enabled status
-    public void setModeSwitch(boolean flag) {
-        modeSwitchEnabled = flag;
+    fun setModeSwitch(flag: Boolean) {
+        isModeSwitchEnabled = flag
     }
 
-    // Check dark mode status
-    public boolean isModeSwitchEnabled() {
-        return modeSwitchEnabled;
+    val isRtlDirection: Boolean
+        // Checks if style direction is RTL
+        get() = direction.equals("rtl", ignoreCase = true)
+
+    fun getAssetPath(path: String): String {
+        return settings.assetsDir + path
     }
 
-    // Set the mode to dark or light
-    public void setModeDefault(String mode) {
-        modeDefault = mode;
+    fun getView(path: String): String {
+        return settings.layoutDir + path
     }
 
-    // Get current mode
-    public String getModeDefault() {
-        return modeDefault;
-    }
-
-    // Set style direction
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
-
-    // Get style direction
-    public String getDirection() {
-        return direction;
-    }
-
-    // Checks if style direction is RTL
-    public boolean isRtlDirection() {
-        return direction.equalsIgnoreCase("rtl");
-    }
-
-    public String getAssetPath(String path) {
-        return settings.getAssetsDir() + path;
-    }
-
-    public String getView(String path) {
-        return settings.getLayoutDir() + path;
-    }
-
-    public String getPageView(String folder, String file) {
-        return "pages/" + folder + "/" + file;
+    fun getPageView(folder: String, file: String): String {
+        return "pages/$folder/$file"
     }
 
     // Extend CSS file name with RTL
-    public String extendCssFilename(String path) {
-        if (isRtlDirection()) {
-            path = path.replace(".css", ".rtl.css");
+    fun extendCssFilename(path: String): String {
+        var _path = path
+        if (isRtlDirection) {
+            _path = _path.replace(".css", ".rtl.css")
         }
 
-        return path;
+        return _path
     }
 
     // Include favicon from settings
-    public String getFavicon() {
-        return getAssetPath(settings.getAssets().getFavicon());
+    fun getFavicon(): String {
+        return getAssetPath(settings.assets.favicon)
     }
 
     // Include the fonts from settings
-    public String[] getFonts() {
-        String[] array = new String[settings.getAssets().getFonts().size()];
-        return settings.getAssets().getFonts().toArray(array);
+    fun getFonts(): List<String> {
+        return settings.assets.fonts
     }
 
     // Get the global assets
-    public String[] getGlobalAssets(String type) {
-        List<String> files =
-                Objects.equals(type, "Css") ? settings.getAssets().getCss() : settings.getAssets().getJs();
-        List<String> newList = new ArrayList<String>();
+    fun getGlobalAssets(type: String): List<String> {
+        val files = if (type == "Css") settings.assets.css else settings.assets.js
+        val newList: MutableList<String> = ArrayList()
 
-        files.forEach((file) -> {
-            if (Objects.equals(type, "Css")) {
-                newList.add(getAssetPath(extendCssFilename(file)));
+        files.forEach(Consumer { file: String ->
+            if (type == "Css") {
+                newList.add(getAssetPath(extendCssFilename(file)))
             } else {
-                newList.add(getAssetPath(file));
+                newList.add(getAssetPath(file))
             }
-        });
+        })
 
-        String[] array = new String[newList.size()];
-        return newList.toArray(array);
+        return newList
     }
 
     // Add multiple vendors to the page by name
-    public void addVendors(String[] vendors) {
-        for (String vendor : vendors) {
+    fun addVendors(vendors: List<String>) {
+        for (vendor in vendors) {
             if (!vendorFiles.contains(vendor)) {
-                vendorFiles.add(vendor);
+                vendorFiles.add(vendor)
             }
         }
     }
 
     // Add single vendor to the page by name
-    public void addVendor(String vendor) {
+    fun addVendor(vendor: String) {
         if (!vendorFiles.contains(vendor)) {
-            vendorFiles.add(vendor);
+            vendorFiles.add(vendor)
         }
     }
 
     // Add custom javascript file to the page
-    public void addJavascriptFile(String file) {
+    fun addJavascriptFile(file: String) {
         if (!javascriptFiles.contains(file)) {
-            javascriptFiles.add(file);
+            javascriptFiles.add(file)
         }
     }
 
     // Add custom CSS file to the page
-    public void addCssFile(String file) {
+    fun addCssFile(file: String) {
         if (!cssFiles.contains(file)) {
-            cssFiles.add(file);
+            cssFiles.add(file)
         }
-    }
-
-    public String[] getJavascriptFiles() {
-        String[] array = new String[javascriptFiles.size()];
-        return javascriptFiles.toArray(array);
-    }
-
-    public String[] getCssFiles() {
-        String[] array = new String[cssFiles.size()];
-        return cssFiles.toArray(array);
     }
 
     // Get vendor files from settings
-    public String[] getVendors(String type) {
-        Map<String, Map<String, List<String>>> vendors = settings.getVendors();
-        List<String> files = new ArrayList<String>();
-        vendorFiles.forEach(vendor -> {
-            if (vendors.containsKey(vendor) && vendors.get(vendor).containsKey(type)) {
-                List<String> vendorFiles = vendors.get(vendor).get(type);
-                for (String file : vendorFiles) {
-                    String vendorPath = file.contains("https://") ? file : getAssetPath(file);
-                    files.add(vendorPath);
+    fun getVendors(type: String): List<String> {
+        val vendors = settings.vendors
+        val files: MutableList<String> = ArrayList()
+        vendorFiles.forEach(Consumer { vendor: String ->
+            if (vendors.containsKey(vendor) && vendors[vendor]!!.containsKey(type)) {
+                val vendorFiles = vendors[vendor]!![type]!!
+                for (file in vendorFiles) {
+                    val vendorPath = if (file.contains("https://")) file else getAssetPath(file)
+                    files.add(vendorPath)
                 }
             }
-        });
-        String[] array = new String[files.size()];
-        return files.toArray(array);
+        })
+        return files
     }
 
-    public String getAttributeValue(String scope, String attributeName) {
+    fun getAttributeValue(scope: String, attributeName: String): String? {
         if (htmlAttributes.containsKey(scope)) {
-            if (htmlAttributes.get(scope).containsKey(attributeName)) {
-                return htmlAttributes.get(scope).get(attributeName);
+            if (htmlAttributes[scope]!!.containsKey(attributeName)) {
+                return htmlAttributes[scope]!![attributeName]
             }
-            return "";
+            return ""
         }
 
-        return "";
-    }
-
-    public void setLayout(String layout) {
-        this.currentLayout = layout;
-    }
-
-    public String getLayout() {
-        return this.currentLayout;
+        return ""
     }
 }
