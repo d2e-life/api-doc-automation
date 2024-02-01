@@ -20,7 +20,7 @@ class Project(
         protected set
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "pt_project_env", joinColumns = [JoinColumn(name = "project_id")])
+    @CollectionTable(name = "pt_project_env", joinColumns = [JoinColumn(name = "project_id")], foreignKey = ForeignKey(ConstraintMode.NO_CONSTRAINT))
     var environments: MutableList<ProjectEnvironment> = environments
         protected set
 

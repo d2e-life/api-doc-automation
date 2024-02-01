@@ -19,12 +19,6 @@ class ProjectQueryTest @Autowired constructor(
     }
 
     @Test
-    fun getProjectWithHostTest() {
-        val project: ProjectDto? = projectQueryService.getProjectWithHost(UUID.fromString("018d5642-cc1b-f38b-a4ea-bfb39cfbb7d8"))
-        println(project)
-    }
-
-    @Test
     fun getProjectsTest() {
         val projects = projectQueryService.getProjects()
         println(projects)
