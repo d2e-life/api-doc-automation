@@ -2,20 +2,20 @@
 <div class="app-navbar flex-shrink-0">
 	<!--begin::Search-->
 	<div class="app-navbar-item align-items-stretch ms-1 ms-md-4">
-		<div th:replace="~{${@theme.getView('partials/header-layout/search/_dropdown.html')}}"></div>
+		<div th:replace="~{layout/partials/header-layout/search/_dropdown.html}"></div>
 	</div>
 	<!--end::Search-->
 	<!--begin::Activities-->
 	<div class="app-navbar-item ms-1 ms-md-4">
 		<!--begin::Drawer toggle-->
-		<div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px" id="kt_activities_toggle">[(${@theme.getIcon("messages", "fs-2")})]</div>
+		<div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px" id="kt_activities_toggle" th:utext="${@theme.getIcon('messages', 'fs-2')}"></div>
 		<!--end::Drawer toggle-->
 	</div>
 	<!--end::Activities-->
 	<!--begin::Notifications-->
 	<div class="app-navbar-item ms-1 ms-md-4">
 		<!--begin::Menu- wrapper-->
-		<div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" id="kt_menu_item_wow">[(${@theme.getIcon("notification-status", "fs-2")})]</div>
+		<div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" id="kt_menu_item_wow" th:utext="${@theme.getIcon('notification-status', 'fs-2')}"></div>
 		<div th:replace="~{partials/menus/_notifications-menu.html}"></div>
 		<!--end::Menu wrapper-->
 	</div>
@@ -31,7 +31,7 @@
 	<!--begin::My apps links-->
 	<div class="app-navbar-item ms-1 ms-md-4">
 		<!--begin::Menu wrapper-->
-		<div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">[(${@theme.getIcon("element-11", "fs-2")})]</div>
+		<div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" th:utext="${@theme.getIcon('element-11', 'fs-2')}"></div>
 		<div th:replace="~{partials/menus/_my-apps-menu.html}"></div>
 		<!--end::Menu wrapper-->
 	</div>
@@ -48,7 +48,7 @@
 	<!--end::User menu-->
 	<!--begin::Header menu toggle-->
 	<div class="app-navbar-item d-lg-none ms-2 me-n2" title="Show header menu">
-		<div class="btn btn-flex btn-icon btn-active-color-primary w-30px h-30px" id="kt_app_header_menu_toggle">[(${@theme.getIcon("element-4", "fs-1")})]</div>
+		<div class="btn btn-flex btn-icon btn-active-color-primary w-30px h-30px" id="kt_app_header_menu_toggle" th:utext="${@theme.getIcon('element-4', 'fs-1')}"></div>
 	</div>
 	<!--end::Header menu toggle-->
 </div>
