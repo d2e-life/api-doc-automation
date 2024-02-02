@@ -494,7 +494,7 @@
 		<!--end::Body-->
 		<!--begin::Footer-->
 		<div class="card-footer py-5 text-center" id="kt_activities_footer">
-			<a href="?page=pages/user-profile/activity" class="btn btn-bg-body text-primary">View All Activities [(${@theme.getIcon("arrow-right", "fs-3 text-primary")})]</a>
+			<a href="?page=pages/user-profile/activity" class="btn btn-bg-body text-primary">View All Activities <span th:utext="${@theme.getIcon('arrow-right', 'fs-3 text-primary')}"></span></a>
 		</div>
 		<!--end::Footer-->
 	</div>

@@ -27,7 +27,7 @@
 					<input type="hidden" />
 					<!--end::Hidden input-->
 					<!--begin::Icon-->
-					[(${@theme.getIcon("magnifier", "fs-2 fs-lg-1 text-gray-500 position-absolute top-50 ms-5 translate-middle-y")})]
+					<span th:utext="${@theme.getIcon('magnifier', 'fs-2 fs-lg-1 text-gray-500 position-absolute top-50 ms-5 translate-middle-y')}"></span>
 					<!--end::Icon-->
 					<!--begin::Input-->
 					<input type="text" class="form-control form-control-lg form-control-solid px-15" name="search" value="" placeholder="Search by username, full name or email..." data-kt-search-element="input" />
