@@ -11,7 +11,6 @@ class ThemeConfig {
 
     @Bean("theme")
     fun theme(settings: KTThemeBaseConfig, iconSettings: KTIconsBaseConfig): KTTheme {
-        println("테마 초기화!!!!!!!!!!")
         return KTTheme(settings, iconSettings)
     }
 }

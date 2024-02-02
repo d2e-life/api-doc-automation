@@ -4,7 +4,7 @@ metronic-settings:
   direction: ltr
   modeSwitchEnabled: true
   modeDefault: light
-  assetsDir: "/assets/"
+  assetsDir: /assets/
   iconType: duotone
   defaultLayout: default-dark-sidebar
   assets:
@@ -36,7 +36,7 @@ metronic-settings:
         - plugins/custom/flotcharts/flotcharts.bundle.js
     google-jsapi:
       Js:
-        - "//www.google.com/jsapi"
+        - //www.google.com/jsapi
     tinymce:
       Js:
         - plugins/custom/tinymce/tinymce.bundle.js

@@ -21,7 +21,7 @@ class DemoController(
             theme.addHtmlAttribute("sidebar-toggle", "data-kt-toggle-state", "active")
             theme.addHtmlClass("sidebar-toggle", "active")
         }
-//        theme.setLayout(settings.defaultLayout)
+//        theme.layout(settings.defaultLayout)
         theme.initLayout()
     }
 
