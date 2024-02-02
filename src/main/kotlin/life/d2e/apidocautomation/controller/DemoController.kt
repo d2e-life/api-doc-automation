@@ -16,19 +16,17 @@ class DemoController(
     @ModelAttribute
     fun themeInit(@CookieValue(name = "sidebar_minimize_state", required = false, defaultValue = "off") sidebarMinimizeState: String) {
         //keep sidebar minimize state for sidebar layouts
-        if (settings.defaultLayout.contains("sidebar") && sidebarMinimizeState.equals("on")) {
+        if (settings.defaultLayout.contains("sidebar") && sidebarMinimizeState == "on") {
             theme.addHtmlAttribute("body", "data-kt-app-sidebar-minimize", "on")
             theme.addHtmlAttribute("sidebar-toggle", "data-kt-toggle-state", "active")
             theme.addHtmlClass("sidebar-toggle", "active")
         }
-//        theme.layout(settings.defaultLayout)
         theme.initLayout()
     }
 
     @GetMapping("/demo/dashboard")
     fun dashboardDemoPage(): String {
-        val vendors: List<String> = listOf("amcharts", "amcharts-maps", "amcharts-stock")
-        theme.addVendors(vendors)
+        theme.addVendors(listOf("amcharts", "amcharts-maps", "amcharts-stock"))
         return "pages/dashboards/index"
     }
 
