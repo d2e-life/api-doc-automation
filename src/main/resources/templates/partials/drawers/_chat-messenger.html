@@ -23,7 +23,7 @@
 			<div class="card-toolbar">
 				<!--begin::Menu-->
 				<div class="me-2">
-					<button class="btn btn-sm btn-icon btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" th:utext="${@theme.getIcon('dots-square', 'fs-3')}"></button>
+					<button class="btn btn-sm btn-icon btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" th:utext="${@ktThemeUtils.getIcon('dots-square', 'fs-3')}"></button>
 					<!--begin::Menu 3-->
 					<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
 						<!--begin::Heading-->
@@ -79,7 +79,7 @@
 				</div>
 				<!--end::Menu-->
 				<!--begin::Close-->
-				<div class="btn btn-sm btn-icon btn-active-light-primary" id="kt_drawer_chat_close" th:utext="${@theme.getIcon('cross', 'fs-2')}"></div>
+				<div class="btn btn-sm btn-icon btn-active-light-primary" id="kt_drawer_chat_close" th:utext="${@ktThemeUtils.getIcon('cross', 'fs-2')}"></div>
 				<!--end::Close-->
 			</div>
 			<!--end::Card toolbar-->
@@ -97,7 +97,7 @@
 						<div class="d-flex align-items-center mb-2">
 							<!--begin::Avatar-->
 							<div class="symbol symbol-35px symbol-circle">
-								<img alt="Pic" th:src="${@theme.getAssetPath('media/avatars/300-25.jpg')}" />
+								<img alt="Pic" th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-25.jpg')}" />
 							</div>
 							<!--end::Avatar-->
 							<!--begin::Details-->
@@ -129,7 +129,7 @@
 							<!--end::Details-->
 							<!--begin::Avatar-->
 							<div class="symbol symbol-35px symbol-circle">
-								<img alt="Pic" th:src="${@theme.getAssetPath('media/avatars/300-1.jpg')}" />
+								<img alt="Pic" th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-1.jpg')}" />
 							</div>
 							<!--end::Avatar-->
 						</div>
@@ -149,7 +149,7 @@
 						<div class="d-flex align-items-center mb-2">
 							<!--begin::Avatar-->
 							<div class="symbol symbol-35px symbol-circle">
-								<img alt="Pic" th:src="${@theme.getAssetPath('media/avatars/300-25.jpg')}" />
+								<img alt="Pic" th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-25.jpg')}" />
 							</div>
 							<!--end::Avatar-->
 							<!--begin::Details-->
@@ -181,7 +181,7 @@
 							<!--end::Details-->
 							<!--begin::Avatar-->
 							<div class="symbol symbol-35px symbol-circle">
-								<img alt="Pic" th:src="${@theme.getAssetPath('media/avatars/300-1.jpg')}" />
+								<img alt="Pic" th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-1.jpg')}" />
 							</div>
 							<!--end::Avatar-->
 						</div>
@@ -201,7 +201,7 @@
 						<div class="d-flex align-items-center mb-2">
 							<!--begin::Avatar-->
 							<div class="symbol symbol-35px symbol-circle">
-								<img alt="Pic" th:src="${@theme.getAssetPath('media/avatars/300-25.jpg')}" />
+								<img alt="Pic" th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-25.jpg')}" />
 							</div>
 							<!--end::Avatar-->
 							<!--begin::Details-->
@@ -234,7 +234,7 @@
 							<!--end::Details-->
 							<!--begin::Avatar-->
 							<div class="symbol symbol-35px symbol-circle">
-								<img alt="Pic" th:src="${@theme.getAssetPath('media/avatars/300-1.jpg')}" />
+								<img alt="Pic" th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-1.jpg')}" />
 							</div>
 							<!--end::Avatar-->
 						</div>
@@ -254,7 +254,7 @@
 						<div class="d-flex align-items-center mb-2">
 							<!--begin::Avatar-->
 							<div class="symbol symbol-35px symbol-circle">
-								<img alt="Pic" th:src="${@theme.getAssetPath('media/avatars/300-25.jpg')}" />
+								<img alt="Pic" th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-25.jpg')}" />
 							</div>
 							<!--end::Avatar-->
 							<!--begin::Details-->
@@ -286,7 +286,7 @@
 							<!--end::Details-->
 							<!--begin::Avatar-->
 							<div class="symbol symbol-35px symbol-circle">
-								<img alt="Pic" th:src="${@theme.getAssetPath('media/avatars/300-1.jpg')}" />
+								<img alt="Pic" th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-1.jpg')}" />
 							</div>
 							<!--end::Avatar-->
 						</div>
@@ -306,7 +306,7 @@
 						<div class="d-flex align-items-center mb-2">
 							<!--begin::Avatar-->
 							<div class="symbol symbol-35px symbol-circle">
-								<img alt="Pic" th:src="${@theme.getAssetPath('media/avatars/300-25.jpg')}" />
+								<img alt="Pic" th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-25.jpg')}" />
 							</div>
 							<!--end::Avatar-->
 							<!--begin::Details-->
@@ -337,8 +337,8 @@
 			<div class="d-flex flex-stack">
 				<!--begin::Actions-->
 				<div class="d-flex align-items-center me-2">
-					<button class="btn btn-sm btn-icon btn-active-light-primary me-1" type="button" data-bs-toggle="tooltip" title="Coming soon" th:utext="${@theme.getIcon('paper-clip', 'fs-3')}"></button>
-					<button class="btn btn-sm btn-icon btn-active-light-primary me-1" type="button" data-bs-toggle="tooltip" title="Coming soon" th:utext="${@theme.getIcon('cloud-add', 'fs-3')}"></button>
+					<button class="btn btn-sm btn-icon btn-active-light-primary me-1" type="button" data-bs-toggle="tooltip" title="Coming soon" th:utext="${@ktThemeUtils.getIcon('paper-clip', 'fs-3')}"></button>
+					<button class="btn btn-sm btn-icon btn-active-light-primary me-1" type="button" data-bs-toggle="tooltip" title="Coming soon" th:utext="${@ktThemeUtils.getIcon('cloud-add', 'fs-3')}"></button>
 				</div>
 				<!--end::Actions-->
 				<!--begin::Send-->

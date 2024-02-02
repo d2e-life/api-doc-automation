@@ -34,7 +34,7 @@
 							<div class="d-flex align-items-center me-5 me-xl-13">
 								<!--begin::Symbol-->
 								<div class="symbol symbol-30px symbol-circle me-3">
-									<img th:src="${@theme.getAssetPath('media/avatars/300-3.jpg')}" class="" alt="" />
+									<img th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-3.jpg')}" class="" alt="" />
 								</div>
 								<!--end::Symbol-->
 								<!--begin::Info-->
@@ -49,7 +49,7 @@
 							<div class="d-flex align-items-center">
 								<!--begin::Symbol-->
 								<div class="symbol symbol-30px symbol-circle me-3">
-									<span class="symbol-label bg-success" th:utext="${@theme.getIcon('abstract-41', 'fs-5 text-white')}"></span>
+									<span class="symbol-label bg-success" th:utext="${@ktThemeUtils.getIcon('abstract-41', 'fs-5 text-white')}"></span>
 								</div>
 								<!--end::Symbol-->
 								<!--begin::Info-->
@@ -101,10 +101,10 @@
 						<!--begin::Users group-->
 						<div class="symbol-group symbol-hover flex-nowrap">
 							<div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Melody Macy">
-								<img alt="Pic" th:src="${@theme.getAssetPath('media/avatars/300-2.jpg')}" />
+								<img alt="Pic" th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-2.jpg')}" />
 							</div>
 							<div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Michael Eberon">
-								<img alt="Pic" th:src="${@theme.getAssetPath('media/avatars/300-3.jpg')}" />
+								<img alt="Pic" th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-3.jpg')}" />
 							</div>
 							<div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Susan Redwood">
 								<span class="symbol-label bg-primary text-inverse-primary fw-bold">S</span>
@@ -112,7 +112,7 @@
 						</div>
 						<!--end::Users group-->
 						<!--begin::Actions-->
-						<a href="?page=apps/projects/project" class="d-flex align-items-center text-primary opacity-75-hover fs-6 fw-semibold">View Project <span th:utext="${@theme.getIcon('exit-right-corner', 'fs-4 ms-1')}"></span></a>
+						<a href="?page=apps/projects/project" class="d-flex align-items-center text-primary opacity-75-hover fs-6 fw-semibold">View Project <span th:utext="${@ktThemeUtils.getIcon('exit-right-corner', 'fs-4 ms-1')}"></span></a>
 						<!--end::Actions-->
 					</div>
 					<!--end::Footer-->

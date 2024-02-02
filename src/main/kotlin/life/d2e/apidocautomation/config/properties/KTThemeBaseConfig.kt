@@ -14,7 +14,6 @@ data class KTThemeBaseConfig(
     val defaultLayout: String,
     val assets: KTThemeAssets,
     val vendors: Map<String, Map<String, List<String>>>
-
 ) {
     data class KTThemeAssets(
         val favicon: String,
@@ -22,5 +21,4 @@ data class KTThemeBaseConfig(
         val css: List<String>,
         val js: List<String>,
     )
-
 }

@@ -5,7 +5,7 @@
 		<div class="card-header" id="kt_activities_header">
 			<h3 class="card-title fw-bold text-gray-900">Activity Logs</h3>
 			<div class="card-toolbar">
-				<button type="button" class="btn btn-sm btn-icon btn-active-light-primary me-n5" id="kt_activities_close" th:utext="${@theme.getIcon('cross', 'fs-1')}"></button>
+				<button type="button" class="btn btn-sm btn-icon btn-active-light-primary me-n5" id="kt_activities_close" th:utext="${@ktThemeUtils.getIcon('cross', 'fs-1')}"></button>
 			</div>
 		</div>
 		<!--end::Header-->
@@ -22,7 +22,7 @@
 						<!--end::Timeline line-->
 						<!--begin::Timeline icon-->
 						<div class="timeline-icon symbol symbol-circle symbol-40px me-4">
-							<div class="symbol-label bg-light" th:utext="${@theme.getIcon('message-text-2', 'fs-2 text-gray-500')}"></div>
+							<div class="symbol-label bg-light" th:utext="${@ktThemeUtils.getIcon('message-text-2', 'fs-2 text-gray-500')}"></div>
 						</div>
 						<!--end::Timeline icon-->
 						<!--begin::Timeline content-->
@@ -39,7 +39,7 @@
 									<!--end::Info-->
 									<!--begin::User-->
 									<div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip" data-bs-boundary="window" data-bs-placement="top" title="Nina Nilson">
-										<img th:src="${@theme.getAssetPath('media/avatars/300-14.jpg')}" alt="img" />
+										<img th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-14.jpg')}" alt="img" />
 									</div>
 									<!--end::User-->
 								</div>
@@ -62,12 +62,12 @@
 									<div class="symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px pe-2">
 										<!--begin::User-->
 										<div class="symbol symbol-circle symbol-25px">
-											<img th:src="${@theme.getAssetPath('media/avatars/300-2.jpg')}" alt="img" />
+											<img th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-2.jpg')}" alt="img" />
 										</div>
 										<!--end::User-->
 										<!--begin::User-->
 										<div class="symbol symbol-circle symbol-25px">
-											<img th:src="${@theme.getAssetPath('media/avatars/300-14.jpg')}" alt="img" />
+											<img th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-14.jpg')}" alt="img" />
 										</div>
 										<!--end::User-->
 										<!--begin::User-->
@@ -101,7 +101,7 @@
 									<div class="symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px">
 										<!--begin::User-->
 										<div class="symbol symbol-circle symbol-25px">
-											<img th:src="${@theme.getAssetPath('media/avatars/300-20.jpg')}" alt="img" />
+											<img th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-20.jpg')}" alt="img" />
 										</div>
 										<!--end::User-->
 										<!--begin::User-->
@@ -134,7 +134,7 @@
 						<!--end::Timeline line-->
 						<!--begin::Timeline icon-->
 						<div class="timeline-icon symbol symbol-circle symbol-40px">
-							<div class="symbol-label bg-light" th:utext="${@theme.getIcon('flag', 'fs-2 text-gray-500')}"></div>
+							<div class="symbol-label bg-light" th:utext="${@ktThemeUtils.getIcon('flag', 'fs-2 text-gray-500')}"></div>
 						</div>
 						<!--end::Timeline icon-->
 						<!--begin::Timeline content-->
@@ -151,7 +151,7 @@
 									<!--end::Info-->
 									<!--begin::User-->
 									<div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip" data-bs-boundary="window" data-bs-placement="top" title="Alan Nilson">
-										<img th:src="${@theme.getAssetPath('media/avatars/300-1.jpg')}" alt="img" />
+										<img th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-1.jpg')}" alt="img" />
 									</div>
 									<!--end::User-->
 								</div>
@@ -169,7 +169,7 @@
 						<!--end::Timeline line-->
 						<!--begin::Timeline icon-->
 						<div class="timeline-icon symbol symbol-circle symbol-40px">
-							<div class="symbol-label bg-light" th:utext="${@theme.getIcon('disconnect', 'fs-2 text-gray-500')}"></div>
+							<div class="symbol-label bg-light" th:utext="${@ktThemeUtils.getIcon('disconnect', 'fs-2 text-gray-500')}"></div>
 						</div>
 						<!--end::Timeline icon-->
 						<!--begin::Timeline content-->
@@ -186,7 +186,7 @@
 									<!--end::Info-->
 									<!--begin::User-->
 									<div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip" data-bs-boundary="window" data-bs-placement="top" title="Jan Hummer">
-										<img th:src="${@theme.getAssetPath('media/avatars/300-23.jpg')}" alt="img" />
+										<img th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-23.jpg')}" alt="img" />
 									</div>
 									<!--end::User-->
 								</div>
@@ -199,7 +199,7 @@
 									<!--begin::Item-->
 									<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 										<!--begin::Icon-->
-										<img alt="" class="w-30px me-3" th:src="${@theme.getAssetPath('media/svg/files/pdf.svg')}" />
+										<img alt="" class="w-30px me-3" th:src="${@ktThemeUtils.getAssetPath('media/svg/files/pdf.svg')}" />
 										<!--end::Icon-->
 										<!--begin::Info-->
 										<div class="ms-1 fw-semibold">
@@ -216,7 +216,7 @@
 									<!--begin::Item-->
 									<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 										<!--begin::Icon-->
-										<img alt="?page=apps/projects/project" class="w-30px me-3" th:src="${@theme.getAssetPath('media/svg/files/doc.svg')}" />
+										<img alt="?page=apps/projects/project" class="w-30px me-3" th:src="${@ktThemeUtils.getAssetPath('media/svg/files/doc.svg')}" />
 										<!--end::Icon-->
 										<!--begin::Info-->
 										<div class="ms-1 fw-semibold">
@@ -233,7 +233,7 @@
 									<!--begin::Item-->
 									<div class="d-flex flex-aligns-center">
 										<!--begin::Icon-->
-										<img alt="?page=apps/projects/project" class="w-30px me-3" th:src="${@theme.getAssetPath('media/svg/files/css.svg')}" />
+										<img alt="?page=apps/projects/project" class="w-30px me-3" th:src="${@ktThemeUtils.getAssetPath('media/svg/files/css.svg')}" />
 										<!--end::Icon-->
 										<!--begin::Info-->
 										<div class="ms-1 fw-semibold">
@@ -261,7 +261,7 @@
 						<!--end::Timeline line-->
 						<!--begin::Timeline icon-->
 						<div class="timeline-icon symbol symbol-circle symbol-40px">
-							<div class="symbol-label bg-light" th:utext="${@theme.getIcon('abstract-26', 'fs-2 text-gray-500')}"></div>
+							<div class="symbol-label bg-light" th:utext="${@ktThemeUtils.getIcon('abstract-26', 'fs-2 text-gray-500')}"></div>
 						</div>
 						<!--end::Timeline icon-->
 						<!--begin::Timeline content-->
@@ -280,7 +280,7 @@
 									<!--end::Info-->
 									<!--begin::User-->
 									<div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip" data-bs-boundary="window" data-bs-placement="top" title="Nina Nilson">
-										<img th:src="${@theme.getAssetPath('media/avatars/300-14.jpg')}" alt="img" />
+										<img th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-14.jpg')}" alt="img" />
 									</div>
 									<!--end::User-->
 								</div>
@@ -298,7 +298,7 @@
 						<!--end::Timeline line-->
 						<!--begin::Timeline icon-->
 						<div class="timeline-icon symbol symbol-circle symbol-40px">
-							<div class="symbol-label bg-light" th:utext="${@theme.getIcon('pencil', 'fs-2 text-gray-500')}"></div>
+							<div class="symbol-label bg-light" th:utext="${@ktThemeUtils.getIcon('pencil', 'fs-2 text-gray-500')}"></div>
 						</div>
 						<!--end::Timeline icon-->
 						<!--begin::Timeline content-->
@@ -315,7 +315,7 @@
 									<!--end::Info-->
 									<!--begin::User-->
 									<div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip" data-bs-boundary="window" data-bs-placement="top" title="Marcus Dotson">
-										<img th:src="${@theme.getAssetPath('media/avatars/300-2.jpg')}" alt="img" />
+										<img th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-2.jpg')}" alt="img" />
 									</div>
 									<!--end::User-->
 								</div>
@@ -329,7 +329,7 @@
 									<div class="overlay me-10">
 										<!--begin::Image-->
 										<div class="overlay-wrapper">
-											<img alt="img" class="rounded w-150px" th:src="${@theme.getAssetPath('media/stock/600x400/img-29.jpg')}" />
+											<img alt="img" class="rounded w-150px" th:src="${@ktThemeUtils.getAssetPath('media/stock/600x400/img-29.jpg')}" />
 										</div>
 										<!--end::Image-->
 										<!--begin::Link-->
@@ -343,7 +343,7 @@
 									<div class="overlay me-10">
 										<!--begin::Image-->
 										<div class="overlay-wrapper">
-											<img alt="img" class="rounded w-150px" th:src="${@theme.getAssetPath('media/stock/600x400/img-31.jpg')}" />
+											<img alt="img" class="rounded w-150px" th:src="${@ktThemeUtils.getAssetPath('media/stock/600x400/img-31.jpg')}" />
 										</div>
 										<!--end::Image-->
 										<!--begin::Link-->
@@ -357,7 +357,7 @@
 									<div class="overlay">
 										<!--begin::Image-->
 										<div class="overlay-wrapper">
-											<img alt="img" class="rounded w-150px" th:src="${@theme.getAssetPath('media/stock/600x400/img-40.jpg')}" />
+											<img alt="img" class="rounded w-150px" th:src="${@ktThemeUtils.getAssetPath('media/stock/600x400/img-40.jpg')}" />
 										</div>
 										<!--end::Image-->
 										<!--begin::Link-->
@@ -381,7 +381,7 @@
 						<!--end::Timeline line-->
 						<!--begin::Timeline icon-->
 						<div class="timeline-icon symbol symbol-circle symbol-40px">
-							<div class="symbol-label bg-light" th:utext="${@theme.getIcon('sms', 'fs-2 text-gray-500')}"></div>
+							<div class="symbol-label bg-light" th:utext="${@ktThemeUtils.getIcon('sms', 'fs-2 text-gray-500')}"></div>
 						</div>
 						<!--end::Timeline icon-->
 						<!--begin::Timeline content-->
@@ -419,7 +419,7 @@
 						<!--end::Timeline line-->
 						<!--begin::Timeline icon-->
 						<div class="timeline-icon symbol symbol-circle symbol-40px">
-							<div class="symbol-label bg-light" th:utext="${@theme.getIcon('pencil', 'fs-2 text-gray-500')}"></div>
+							<div class="symbol-label bg-light" th:utext="${@ktThemeUtils.getIcon('pencil', 'fs-2 text-gray-500')}"></div>
 						</div>
 						<!--end::Timeline icon-->
 						<!--begin::Timeline content-->
@@ -436,7 +436,7 @@
 									<!--end::Info-->
 									<!--begin::User-->
 									<div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip" data-bs-boundary="window" data-bs-placement="top" title="Robert Rich">
-										<img th:src="${@theme.getAssetPath('media/avatars/300-4.jpg')}" alt="img" />
+										<img th:src="${@ktThemeUtils.getAssetPath('media/avatars/300-4.jpg')}" alt="img" />
 									</div>
 									<!--end::User-->
 								</div>
@@ -459,7 +459,7 @@
 						<!--end::Timeline line-->
 						<!--begin::Timeline icon-->
 						<div class="timeline-icon symbol symbol-circle symbol-40px">
-							<div class="symbol-label bg-light" th:utext="${@theme.getIcon('basket', 'fs-2 text-gray-500')}"></div>
+							<div class="symbol-label bg-light" th:utext="${@ktThemeUtils.getIcon('basket', 'fs-2 text-gray-500')}"></div>
 						</div>
 						<!--end::Timeline icon-->
 						<!--begin::Timeline content-->
@@ -494,7 +494,7 @@
 		<!--end::Body-->
 		<!--begin::Footer-->
 		<div class="card-footer py-5 text-center" id="kt_activities_footer">
-			<a href="?page=pages/user-profile/activity" class="btn btn-bg-body text-primary">View All Activities <span th:utext="${@theme.getIcon('arrow-right', 'fs-3 text-primary')}"></span></a>
+			<a href="?page=pages/user-profile/activity" class="btn btn-bg-body text-primary">View All Activities <span th:utext="${@ktThemeUtils.getIcon('arrow-right', 'fs-3 text-primary')}"></span></a>
 		</div>
 		<!--end::Footer-->
 	</div>

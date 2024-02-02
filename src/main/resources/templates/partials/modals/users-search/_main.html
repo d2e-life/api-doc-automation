@@ -7,7 +7,7 @@
 			<!--begin::Modal header-->
 			<div class="modal-header pb-0 border-0 justify-content-end">
 				<!--begin::Close-->
-				<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal" th:utext="${@theme.getIcon('cross', 'fs-1')}"></div>
+				<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal" th:utext="${@ktThemeUtils.getIcon('cross', 'fs-1')}"></div>
 				<!--end::Close-->
 			</div>
 			<!--begin::Modal header-->
@@ -27,7 +27,7 @@
 					<input type="hidden" />
 					<!--end::Hidden input-->
 					<!--begin::Icon-->
-					<span th:utext="${@theme.getIcon('magnifier', 'fs-2 fs-lg-1 text-gray-500 position-absolute top-50 ms-5 translate-middle-y')}"></span>
+					<span th:utext="${@ktThemeUtils.getIcon('magnifier', 'fs-2 fs-lg-1 text-gray-500 position-absolute top-50 ms-5 translate-middle-y')}"></span>
 					<!--end::Icon-->
 					<!--begin::Input-->
 					<input type="text" class="form-control form-control-lg form-control-solid px-15" name="search" value="" placeholder="Search by username, full name or email..." data-kt-search-element="input" />
@@ -38,7 +38,7 @@
 					</span>
 					<!--end::Spinner-->
 					<!--begin::Reset-->
-					<span class="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 me-5 d-none" data-kt-search-element="clear" th:utext="${@theme.getIcon('cross', 'fs-2 fs-lg-1 me-0')}"></span>
+					<span class="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 me-5 d-none" data-kt-search-element="clear" th:utext="${@ktThemeUtils.getIcon('cross', 'fs-2 fs-lg-1 me-0')}"></span>
 					<!--end::Reset--></form>
 					<!--end::Form-->
 					<!--begin::Wrapper-->

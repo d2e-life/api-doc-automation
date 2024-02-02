@@ -1,5 +1,5 @@
 <html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{${@theme.getView('system')}}">
+    layout:decorate="~{layout/system}">
 
 <head>
     <title>Error</title>
@@ -32,9 +32,9 @@
 
         <!--begin::Illustration-->
         <div class="mb-3">
-            <img th:src="${@theme.getAssetPath('media/auth/404-error.png')}" class="mw-100 mh-300px theme-light-show"
+            <img th:src="${@ktThemeUtils.getAssetPath('media/auth/404-error.png')}" class="mw-100 mh-300px theme-light-show"
                 alt="" />
-            <img th:src="${@theme.getAssetPath('media/auth/404-error-dark.png')}"
+            <img th:src="${@ktThemeUtils.getAssetPath('media/auth/404-error-dark.png')}"
                 class="mw-100 mh-300px theme-dark-show" alt="" />
         </div>
         <!--end::Illustration-->
