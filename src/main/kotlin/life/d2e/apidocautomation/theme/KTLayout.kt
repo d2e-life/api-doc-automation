@@ -35,15 +35,11 @@ interface KTLayout {
 
     // Print HTML attributes for the HTML template
     fun printHtmlAttributes(scope: String): String {
-        val list: MutableList<String> = ArrayList()
         if (htmlAttributes.containsKey(scope)) {
-            htmlAttributes[scope]!!.forEach { (key: String, value: String) ->
-                val item = "$key=$value"
-                list.add(item)
-            }
-            return list.joinToString(",")
+            return htmlAttributes[scope]!!.map { "${it.key}=${it.value}" }.joinToString()
+        } else {
+            return "data-kt-no-attribute='true'"
         }
-        return "data-kt-no-attribute='true'"
     }
 
     // Print HTML classes for the HTML template
@@ -84,7 +80,7 @@ interface KTLayout {
     // Get vendor files from settings
     fun getVendors(type: String): List<String> {
         return vendorFiles
-            .filter { ktThemeBaseConfig.vendors[it] != null }
+            .filter { ktThemeBaseConfig.vendors[it]?.get(type) != null }
             .flatMap { ktThemeBaseConfig.vendors[it]?.get(type)!! }
             .map { if (it.contains("https://")) it else ktThemeUtils.getAssetPath(it) }
     }

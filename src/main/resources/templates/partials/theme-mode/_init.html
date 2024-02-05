@@ -1,6 +1,6 @@
 <!--begin::Theme mode setup on page load-->
 <script>
-var defaultThemeMode = "[[${@ktLayoutWrapper.get(page.layout).modeDefault}]]";
+var defaultThemeMode = "[[${pageLayout.modeDefault}]]";
 var themeMode;
 if (document.documentElement) {
     if (document.documentElement.hasAttribute("data-bs-theme-mode")) {

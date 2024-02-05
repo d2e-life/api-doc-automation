@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" th:attr="__${@ktLayoutWrapper.get(page.layout).printHtmlAttributes('html')}__" lang="en">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" th:attr="__${pageLayout.printHtmlAttributes('html')}__" lang="en">
 <!--begin::Head-->
 
 <head>
@@ -19,20 +19,20 @@
     <!--end::Fonts-->
 
     <!--begin::Vendor Stylesheets(optional)-->
-    <link th:each="file: ${@ktLayoutWrapper.get(page.layout).getVendors('Css')}" rel="stylesheet" type="text/css" th:href="@{${file}}" />
+    <link th:each="file: ${pageLayout.getVendors('Css')}" rel="stylesheet" type="text/css" th:href="@{${file}}" />
     <!--end::Vendor Stylesheets-->
 
     <!--begin::Global Stylesheets(mandatory)-->
-    <link th:each="file: ${@ktLayoutWrapper.get(page.layout).getGlobalAssets('Css')}" rel="stylesheet" type="text/css" th:href="@{${file}}" />
+    <link th:each="file: ${pageLayout.getGlobalAssets('Css')}" rel="stylesheet" type="text/css" th:href="@{${file}}" />
     <!--end::Global Stylesheets-->
 
     <!--begin::Custom Stylesheets(optional)-->
-    <link th:each="file: ${@ktLayoutWrapper.get(page.layout).getCssFiles()}" rel="stylesheet" type="text/css" th:href="@{${@ktThemeUtils.getAssetPath(file)}}" />
+    <link th:each="file: ${pageLayout.getCssFiles()}" rel="stylesheet" type="text/css" th:href="@{${@ktThemeUtils.getAssetPath(file)}}" />
     <!--end::Custom Stylesheets-->
 </head>
 <!--end::Head-->
 
-<body th:attr="__${@ktLayoutWrapper.get(page.layout).printHtmlAttributes('body')}__" th:class="${@ktLayoutWrapper.get(page.layout).printHtmlClasses('body')}">
+<body th:attr="__${pageLayout.printHtmlAttributes('body')}__" th:class="${pageLayout.printHtmlClasses('body')}">
     <th:block th:replace="~{partials/theme-mode/_init.html}"></th:block>
 
     <th:block layout:fragment="body"></th:block>
@@ -40,15 +40,15 @@
     <th:block layout:fragment="offcanvas"></th:block>
 
     <!--begin::Global Javascript(mandatory)-->
-    <script th:each="file: ${@ktLayoutWrapper.get(page.layout).getGlobalAssets('Js')}" th:src="${file}"></script>
+    <script th:each="file: ${pageLayout.getGlobalAssets('Js')}" th:src="${file}"></script>
     <!--end::Global Javascript-->
 
     <!--begin::Vendors Javascript(optional)-->
-    <script th:each="file: ${@ktLayoutWrapper.get(page.layout).getVendors('Js')}" th:src="${file}"></script>
+    <script th:each="file: ${pageLayout.getVendors('Js')}" th:src="${file}"></script>
     <!--end::Vendors Javascript-->
 
     <!--begin::Custom Javascript(optional)-->
-    <script th:each="file: ${@ktLayoutWrapper.get(page.layout).getJavascriptFiles()}" th:src="${@ktThemeUtils.getAssetPath(file)}"></script>
+    <script th:each="file: ${pageLayout.getJavascriptFiles()}" th:src="${@ktThemeUtils.getAssetPath(file)}"></script>
     <!--end::Custom Javascript-->
 </body>
 </html>
