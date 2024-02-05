@@ -39,9 +39,4 @@ class DemoController(
         return "pages/dashboards/index"
     }
 
-    @GetMapping("/demo/test")
-    fun testDemoPage(): String {
-        return "pages/dashboards/test"
-    }
-
 }
