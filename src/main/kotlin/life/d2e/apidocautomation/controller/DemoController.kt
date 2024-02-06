@@ -1,5 +1,6 @@
 package life.d2e.apidocautomation.controller
 
+import life.d2e.apidocautomation.theme.DefaultDarkSidebar
 import life.d2e.apidocautomation.theme.KTLayout
 import life.d2e.apidocautomation.theme.KTLayoutWrapper
 import org.springframework.stereotype.Controller
@@ -19,8 +20,7 @@ class DemoController(
         @CookieValue(name = "sidebar_minimize_state", required = false, defaultValue = "off") sidebarMinimizeState: String,
     ) {
         val defaultDarkSidebar = ktLayoutWrapper.get("defaultDarkSidebar")
-//        val pageLayout: KTLayout = (defaultDarkSidebar as DefaultDarkSidebar).copy()
-        val pageLayout: KTLayout = defaultDarkSidebar
+        val pageLayout: KTLayout = (defaultDarkSidebar as DefaultDarkSidebar).copy()
         pageLayout.addVendors(listOf("amcharts", "amcharts-maps", "amcharts-stock"))
 
         //keep sidebar minimize state for sidebar layouts
