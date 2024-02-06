@@ -4,7 +4,7 @@ metronic-settings:
   direction: ltr
   modeSwitchEnabled: true
   modeDefault: light
-  assetsDir: /assets/
+  assetsDir: https://static.d2e.life/api-doc-automation/static/assets/
   iconType: duotone
   defaultLayout: default-dark-sidebar
   assets:

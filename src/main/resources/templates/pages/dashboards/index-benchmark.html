@@ -7873,7 +7873,7 @@ if (document.documentElement) {
         <!--begin::Col-->
         <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
             <!--begin::Card widget 20-->
-<div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-50 mb-5 mb-xl-10" style="background-color: #F1416C;background-image:url('/assets/media/patterns/vector-1.png')">
+<div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-50 mb-5 mb-xl-10" th:style="'background-color: #F1416C;background-image:url('+ ${@ktThemeUtils.getAssetPath('media/patterns/vector-1.png')} +')'">
 	<!--begin::Header-->
 	<div class="card-header pt-5">
 		<!--begin::Title-->
@@ -8173,7 +8173,7 @@ if (document.documentElement) {
             <!--begin::Engage widget 10-->
 <div class="card card-flush h-md-100">
 	<!--begin::Body-->
-	<div class="card-body d-flex flex-column justify-content-between mt-9 bgi-no-repeat bgi-size-cover bgi-position-x-center pb-0" style="background-position: 100% 50%; background-image:url('/assets/media/stock/900x600/42.png')">
+	<div class="card-body d-flex flex-column justify-content-between mt-9 bgi-no-repeat bgi-size-cover bgi-position-x-center pb-0" th:style="'background-position: 100% 50%; background-image:url('+ ${@ktThemeUtils.getAssetPath('media/stock/900x600/42.png')} + ')'">
 		<!--begin::Wrapper-->
 		<div class="mb-10">
 			<!--begin::Title-->
@@ -9217,7 +9217,7 @@ if (document.documentElement) {
 			<!--begin::Col-->
 			<div class="col-sm-6 mb-10 mb-sm-0">
 				<!--begin::Image-->
-				<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-400px min-h-sm-100 h-100" style="background-size: 100% 100%;background-image:url('/assets/media/stock/600x600/img-65.jpg')"></div>
+				<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-400px min-h-sm-100 h-100" th:style="'background-size: 100% 100%;background-image:url(' + ${@ktThemeUtils.getAssetPath('media/stock/600x600/img-65.jpg')} + ')'"></div>
 				<!--end::Image-->
 			</div>
 			<!--end::Col-->
