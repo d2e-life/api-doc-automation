@@ -13,7 +13,6 @@ data class KTThemeBaseConfig(
     val iconType: String,
     val defaultLayout: String,
     val assets: Assets,
-//    val vendors: Map<String, Map<String, List<String>>>
     val vendors: List<Vendor>
 ) {
     data class Assets(

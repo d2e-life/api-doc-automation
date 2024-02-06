@@ -11,6 +11,7 @@ metronic-settings:
     favicon: media/logos/favicon.ico
     fonts:
       - https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700
+      - https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap
     css:
       - plugins/global/plugins.bundle.css
       - css/style.bundle.css

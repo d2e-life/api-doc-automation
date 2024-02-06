@@ -1,8 +1,6 @@
 package life.d2e.apidocautomation.controller
 
-import life.d2e.apidocautomation.theme.DefaultDarkSidebar
-import life.d2e.apidocautomation.theme.KTLayout
-import life.d2e.apidocautomation.theme.KTLayoutWrapper
+import life.d2e.apidocautomation.theme.*
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.CookieValue
@@ -10,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 
 @Controller
-class DemoController(
+class AutomationController(
     val ktLayoutWrapper: KTLayoutWrapper
 ) {
 
@@ -19,11 +17,22 @@ class DemoController(
         model: Model,
         @CookieValue(name = "sidebar_minimize_state", required = false, defaultValue = "off") sidebarMinimizeState: String,
     ) {
-        val defaultDarkSidebar = ktLayoutWrapper.get("defaultDarkSidebar")
-        val pageLayout: KTLayout = (defaultDarkSidebar as DefaultDarkSidebar).copy()
+        val thisPageLayout = "defaultDarkSidebar"
+//        val thisPageLayout = "defaultDarkHeader"
+//        val thisPageLayout = "defaultLightSidebar"
+//        val thisPageLayout = "defaultLightHeader"
+
+        val pageLayout: KTLayout = when (val beanLayout = ktLayoutWrapper.get(thisPageLayout)) {
+            is DefaultDarkSidebar -> beanLayout.copy()
+            is DefaultDarkHeader -> beanLayout.copy()
+            is DefaultLightHeader -> beanLayout.copy()
+            is DefaultLightSidebar -> beanLayout.copy()
+            else -> (ktLayoutWrapper.defaultDarkSidebar as DefaultDarkSidebar).copy()
+        }
+
         pageLayout.addVendors(listOf("amcharts", "amcharts-maps", "amcharts-stock"))
 
-        //keep sidebar minimize state for sidebar layouts
+        //keep sidebar minimize state for sidebar layouts -> javascript 단에서 처리해야하지 않나?
         if (sidebarMinimizeState == "on") {
             pageLayout.addHtmlAttribute("body", "data-kt-app-sidebar-minimize", "on")
             pageLayout.addHtmlAttribute("sidebar-toggle", "data-kt-toggle-state", "active")
@@ -34,7 +43,7 @@ class DemoController(
         model.addAttribute("pageLayout", pageLayout)
     }
 
-    @GetMapping("/demo/dashboard")
+    @GetMapping("/dashboard")
     fun dashboardDemoPage(): String {
         return "pages/dashboards/index"
     }
