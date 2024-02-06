@@ -52,7 +52,7 @@ interface KTLayout {
 
     // Get the global assets
     fun getGlobalAssets(type: String): List<String> {
-        if (type == "Css") {
+        if (type == "css") {
             if (this.direction == "rtl") {
                 return ktThemeBaseConfig.assets.css.map { ktThemeUtils.getAssetPath(it.replace(".css", ".rtl.css")) }.toList()
             }
@@ -77,11 +77,17 @@ interface KTLayout {
         }
     }
 
-    // Get vendor files from settings
-    fun getVendors(type: String): List<String> {
-        return vendorFiles
-            .filter { ktThemeBaseConfig.vendors[it]?.get(type) != null }
-            .flatMap { ktThemeBaseConfig.vendors[it]?.get(type)!! }
+    fun getVendorCssList(): List<String> {
+        return ktThemeBaseConfig.vendors
+            .filter { vendorFiles.contains(it.name) && !it.css.isNullOrEmpty() }
+            .flatMap { it.css!! }
+            .map { if (it.contains("https://")) it else ktThemeUtils.getAssetPath(it) }
+    }
+
+    fun getVendorJsList(): List<String> {
+        return ktThemeBaseConfig.vendors
+            .filter { vendorFiles.contains(it.name) && !it.js.isNullOrEmpty() }
+            .flatMap { it.js!! }
             .map { if (it.contains("https://")) it else ktThemeUtils.getAssetPath(it) }
     }
 

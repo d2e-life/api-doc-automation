@@ -12,13 +12,20 @@ data class KTThemeBaseConfig(
     val assetsDir: String,
     val iconType: String,
     val defaultLayout: String,
-    val assets: KTThemeAssets,
-    val vendors: Map<String, Map<String, List<String>>>
+    val assets: Assets,
+//    val vendors: Map<String, Map<String, List<String>>>
+    val vendors: List<Vendor>
 ) {
-    data class KTThemeAssets(
+    data class Assets(
         val favicon: String,
         val fonts: List<String>,
         val css: List<String>,
         val js: List<String>,
+    )
+
+    data class Vendor(
+        val name: String,
+        val css: List<String>?,
+        val js: List<String>?,
     )
 }

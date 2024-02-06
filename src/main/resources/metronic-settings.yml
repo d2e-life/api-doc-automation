@@ -18,96 +18,96 @@ metronic-settings:
       - plugins/global/plugins.bundle.js
       - js/scripts.bundle.js
   vendors:
-    datatables:
-      Css:
+    - name: datatables
+      css:
         - plugins/custom/datatables/datatables.bundle.css
-      Js:
+      js:
         - plugins/custom/datatables/datatables.bundle.js
-    formrepeater:
-      Js:
+    - name: formrepeater
+      js:
         - plugins/custom/formrepeater/formrepeater.bundle.js
-    fullcalendar:
-      Css:
+    - name: fullcalendar
+      css:
         - plugins/custom/fullcalendar/fullcalendar.bundle.css
-      Js:
+      js:
         - plugins/custom/fullcalendar/fullcalendar.bundle.js
-    flotcharts:
-      Js:
+    - name: flotcharts
+      js:
         - plugins/custom/flotcharts/flotcharts.bundle.js
-    google-jsapi:
-      Js:
+    - name: google-jsapi
+      js:
         - //www.google.com/jsapi
-    tinymce:
-      Js:
+    - name: tinymce
+      js:
         - plugins/custom/tinymce/tinymce.bundle.js
-    ckeditor-classic:
-      Js:
+    - name: ckeditor-classic
+      js:
         - plugins/custom/ckeditor/ckeditor-classic.bundle.js
-    ckeditor-inline:
-      Js:
+    - name: ckeditor-inline
+      js:
         - plugins/custom/ckeditor/ckeditor-inline.bundle.js
-    ckeditor-balloon:
-      Js:
+    - name: ckeditor-balloon
+      js:
         - plugins/custom/ckeditor/ckeditor-balloon.bundle.js
-    ckeditor-balloon-block:
-      Js:
+    - name: ckeditor-balloon-block
+      js:
         - plugins/custom/ckeditor/ckeditor-balloon-block.bundle.js
-    ckeditor-document:
-      Js:
+    - name: ckeditor-document
+      js:
         - plugins/custom/ckeditor/ckeditor-document.bundle.js
-    draggable:
-      Js:
+    - name: draggable
+      js:
         - plugins/custom/draggable/draggable.bundle.js
-    fslightbox:
-      Js:
+    - name: fslightbox
+      js:
         - plugins/custom/fslightbox/fslightbox.bundle.js
-    jkanban:
-      Css:
+    - name: jkanban
+      css:
         - plugins/custom/jkanban/jkanban.bundle.css
-      Js:
+      js:
         - plugins/custom/jkanban/jkanban.bundle.js
-    typedjs:
-      Js:
+    - name: typedjs
+      js:
         - plugins/custom/typedjs/typedjs.bundle.js
-    cookiealert:
-      Css:
+    - name: cookiealert
+      css:
         - plugins/custom/cookiealert/cookiealert.bundle.css
-      Js:
+      js:
         - plugins/custom/cookiealert/cookiealert.bundle.js
-    cropper:
-      Css:
+    - name: cropper
+      css:
         - plugins/custom/cropper/cropper.bundle.css
-      Js:
+      js:
         - plugins/custom/cropper/cropper.bundle.js
-    vis-timeline:
-      Css:
+    - name: vis-timeline
+      css:
         - plugins/custom/vis-timeline/vis-timeline.bundle.css
-      Js:
+      js:
         - plugins/custom/vis-timeline/vis-timeline.bundle.js
-    jstree:
-      Css:
+    - name: jstree
+      css:
         - plugins/custom/jstree/jstree.bundle.css
-      Js:
+      js:
         - plugins/custom/jstree/jstree.bundle.js
-    prismjs:
-      Css:
+    - name: prismjs
+      css:
         - plugins/custom/prismjs/prismjs.bundle.css
-      Js:
+      js:
         - plugins/custom/prismjs/prismjs.bundle.js
-    leaflet:
-      Css:
+    - name: leaflet
+      css:
         - plugins/custom/leaflet/leaflet.bundle.css
-      Js:
+      js:
         - plugins/custom/leaflet/leaflet.bundle.js
-    amcharts:
-      Js:
+    - name: amcharts
+      js:
         - https://cdn.amcharts.com/lib/5/index.js
         - https://cdn.amcharts.com/lib/5/xy.js
         - https://cdn.amcharts.com/lib/5/percent.js
         - https://cdn.amcharts.com/lib/5/radar.js
         - https://cdn.amcharts.com/lib/5/themes/Animated.js
-    amcharts-maps:
-      Js:
+    - name: amcharts-maps
+      js:
         - https://cdn.amcharts.com/lib/5/index.js
         - https://cdn.amcharts.com/lib/5/map.js
         - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
@@ -116,13 +116,13 @@ metronic-settings:
         - https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js
         - https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js
         - https://cdn.amcharts.com/lib/5/themes/Animated.js
-    amcharts-stock:
-      Js:
+    - name: amcharts-stock
+      js:
         - https://cdn.amcharts.com/lib/5/index.js
         - https://cdn.amcharts.com/lib/5/xy.js
         - https://cdn.amcharts.com/lib/5/themes/Animated.js
-    bootstrap-select:
-      Css:
+    - name: bootstrap-select
+      css:
         - plugins/custom/bootstrap-select/bootstrap-select.bundle.css
-      Js:
+      js:
         - plugins/custom/bootstrap-select/bootstrap-select.bundle.js
