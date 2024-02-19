@@ -17,6 +17,7 @@ class AutomationController(
         model: Model,
         @CookieValue(name = "sidebar_minimize_state", required = false, defaultValue = "off") sidebarMinimizeState: String,
     ) {
+        // 여러 layout 을 쓸 이유가 있을까? 프로젝트에서 하나만 쓰는게 나을 것 같음
         val thisPageLayout = "defaultDarkSidebar"
 //        val thisPageLayout = "defaultDarkHeader"
 //        val thisPageLayout = "defaultLightSidebar"
