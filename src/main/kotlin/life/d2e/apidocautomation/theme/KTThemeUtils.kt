@@ -3,7 +3,6 @@ package life.d2e.apidocautomation.theme
 import life.d2e.apidocautomation.config.properties.KTIconsBaseConfig
 import life.d2e.apidocautomation.config.properties.KTThemeBaseConfig
 import org.apache.commons.lang3.StringUtils
-import java.util.*
 
 class KTThemeUtils(
     private val ktThemeBaseConfig: KTThemeBaseConfig,
